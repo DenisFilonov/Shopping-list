@@ -1,0 +1,45 @@
+﻿<Window x:Class="WpfApp5_pd.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfApp5_pd"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="400" Width="400" MaxHeight="400" MaxWidth="400" MinHeight="300" MinWidth="300" 
+        WindowStartupLocation="CenterScreen">
+    
+    <Grid DataContext="{Binding ElementName=lbProducts, Path=SelectedItem}">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        
+        <StackPanel Grid.Column="0">
+            <Label Content="Список покупок:" Margin="5 5 0 0"/>
+
+            <ListBox x:Name="lbProducts" Margin="5" Height="320" SelectionChanged="lbProducts_SelectionChanged"
+                     ItemsSource="{Binding RelativeSource={RelativeSource AncestorType=Window}, Path=Products}"/>
+        </StackPanel>
+
+        <StackPanel Grid.Column="1" >
+            <CheckBox x:Name="chbBought" Content="Товар приобретён" Margin="5 15 0 0" IsChecked="{Binding Purchased}"/>
+            
+            <Label Content="Наименование" Margin="5 5 0 0"/>
+            <TextBox x:Name="tbName" Margin="5" Width="180" Text="{Binding Name}"/>
+
+            <Label Content="Количество" Margin="5 5 0 0"/>
+            <TextBox x:Name="tbCount" Margin="5" Width="180" Text="{Binding Count}"/>
+            
+            <Label Content="Предполагаемая цена" Margin="5 5 0 0"/>
+            <TextBox x:Name="tbPrice" Margin="5" Width="180" Text="{Binding Price}"/>
+            
+            <Label Content="Реальная цена" Margin="5 5 0 0"/>
+            <TextBox x:Name="tbRealPrice" Margin="5" Width="180" Text="{Binding RealPrice}"/>
+
+            <Label x:Name="lblCode" Content="Штрих-код" Margin="5 5 0 0"/>
+            <TextBox x:Name="tbCode" Margin="5" Width="180" Text="{Binding Code}"/>
+        </StackPanel>
+
+    </Grid>
+    
+</Window>
